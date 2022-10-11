@@ -30,16 +30,13 @@ class test_BaseModel(unittest.TestCase):
     #     b4 = BaseModel()
     #     self.assertEqual(b4.created_at, b4.updated_at)
     #     sleep(1)
-    #     b4.save()
+    #     /ve()
     #     self.assertNotEqual(b4.created_at, b4.updated_at)
 
     def test_str(self):
         b5 = BaseModel()
         f = f"[{b5.__class__.__name__}] ({b5.id}) {b5.__dict__}"
-        p = str(b5.__str__)
-        print("Lo de abajo es P")
-        print(p)
-        print("Lo de abajo NOOOOO")
+        p = b5.__str__()
         self.assertEqual(p, f)
 
 
