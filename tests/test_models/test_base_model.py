@@ -23,8 +23,9 @@ class test_BaseModel(unittest.TestCase):
 
     def test_to_dict(self):
         b3 = BaseModel()
-        v = b3.__dict__
+        v = b3.to_dict()
         self.assertEqual(type(v), type({}))
+        self.assertIsNotNone(v['id'])
 
     # def test_update_time(self):
     #     b4 = BaseModel()
