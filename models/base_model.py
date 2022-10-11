@@ -29,8 +29,8 @@ class BaseModel:
 
     def to_dict(self):
         nt = self.__dict__.copy()
-        nt = self.__dict__['created_at'] = self.created_at.isoformat()
-        nt = self.__dict__['updated_at'] = self.updated_at.isoformat()
-        nt = self.__dict__['__class__'] = self.__class__.__name__
+        nt['created_at'] = self.created_at.isoformat()
+        nt['updated_at'] = self.updated_at.isoformat()
+        nt['__class__'] = self.__class__.__name__
 
         return nt
