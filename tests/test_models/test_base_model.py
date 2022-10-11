@@ -27,12 +27,12 @@ class test_BaseModel(unittest.TestCase):
         self.assertEqual(type(v), type({}))
         self.assertIsNotNone(v['id'])
 
-    # def test_update_time(self):
-    #     b4 = BaseModel()
-    #     self.assertEqual(b4.created_at, b4.updated_at)
-    #     sleep(1)
-    #     /ve()
-    #     self.assertNotEqual(b4.created_at, b4.updated_at)
+    def test_update_time(self):
+        b4 = BaseModel()
+        self.assertEqual(b4.created_at, b4.updated_at)
+        sleep(1)
+        b4.save()
+        self.assertNotEqual(b4.created_at, b4.updated_at)
 
     def test_str(self):
         b5 = BaseModel()
