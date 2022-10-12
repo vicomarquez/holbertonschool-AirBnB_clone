@@ -19,11 +19,10 @@ class BaseModel:
     __str__: should print: [<class name>] (<self.id>) <self.__dict__>
     """
     def __init__(self, *args, **kwargs):
-
+        self.id = str(uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
         if kwargs:
-            self.id = str(uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
             for key, v in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
                     v = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
@@ -32,9 +31,6 @@ class BaseModel:
                 else:
                     setattr(self, key, v)
         else:
-            self.id = str(uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
             models.storage.new(self)
 
     def __str__(self):
