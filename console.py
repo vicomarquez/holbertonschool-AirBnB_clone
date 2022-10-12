@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+"""entry point of the command interpreter"""
+
+
 import cmd
 
 class HBNBCommand(cmd.Cmd):
@@ -13,6 +16,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, arg):
         """exits program"""
+        print("")
         return True
 
 if __name__ == '__main__':
