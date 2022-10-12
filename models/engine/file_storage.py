@@ -2,43 +2,44 @@
 """
 File Storage
 """
-from json import json
+import json
 from models.base_model import BaseModel
 
 
-class FileStorage(BaseModel):
+class FileStorage:
     """
     File storage WIP
     """
-    def __init__(self):
-        """"
-        Init File Storage
-        """
-        __file_path = "engine/file.json"
-        __objects = {}
+    __file_path = "file.json"
+    __objects = {}
     
     def all(self):
-        return self.__objects #IDK
+        return self.__objects
 
     def new(self, obj):
-        dic = {}
-        k = f"{self.obj.__class__.__name__}.{obj.id}"
-        obj_dict = obj.to_dict()
-        self.__objects[k] = obj_dict
+        k = "{}.{}".format(obj.__class__.__name__, obj.id)
+        # k = f"{self.obj.__class__.__name__}.{obj.id}"
+        self.__objects[k] = obj
         
-
     def save(self):
         """
         Function that writes an object to text file,
         using a JSON representation.
         """
-        with open(self.__file_path, 'w') as f:
-            json.dump(self.__objects, f)
+        dic ={}
+        with open(self.__file_path, 'w', encoding="utf-8") as f:
+            for k, v in self.__objects.items():
+                dic[k] = v.to_dict()
+            json.dump(dic, f)
 
     def reload(self):
         """Reloading"""
         try:
             with open(self.__file_path, 'r') as f:
-                return json.load(f)
+                d = json.load(f)
+                for v in d.values():
+                    val = v['__class__']
+                    del v['__class__']
+                    self.new(eval(val)(**v))
         except FileNotFoundError:
             pass
