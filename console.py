@@ -16,9 +16,10 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, arg):
         """exits program"""
+        print("")
         return True
 
-    def do_empty(self, arg):
+    def do_empty(self):
         """shouldn’t execute anything"""
         pass
 
