@@ -1,15 +1,12 @@
 #!/usr/bin/python3
-
 """entry point of the command interpreter"""
-
-
 import cmd
 from models.base_model import BaseModel
+
 
 class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
-
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
@@ -20,9 +17,10 @@ class HBNBCommand(cmd.Cmd):
         print("")
         exit()
 
-    def do_empty(self):
+    def emptyline(self):
         """shouldn’t execute anything"""
         pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
