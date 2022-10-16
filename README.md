@@ -85,5 +85,10 @@ Documented commands (type help <topic>):
 ========================================
 EOF  help  quit
 (hbnb) 
-$
+
 ```
+## Authors
+
+- José Álvarez - [GitHub](https://github.com/BesterGG)
+- Victoria Márquez - [GitHub](https://github.com/vicomarquez)
+
