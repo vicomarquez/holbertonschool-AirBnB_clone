@@ -3,6 +3,12 @@
 File Storage
 """
 import json
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+from models.user import User
 from models.base_model import BaseModel
 
 
@@ -43,3 +49,14 @@ class FileStorage:
                     self.new(eval(val)(**v))
         except FileNotFoundError:
             pass
+
+    def class_dict(self):
+        dict_ = {
+            "State": State(),
+            "City": City(),
+            "Amenity": Amenity(),
+            "Place": Place(),
+            "Review": Review(),
+            "User": User(),
+            "BaseModel": BaseModel()}
+        return dict_
