@@ -10,17 +10,17 @@ class test_cplace(unittest.TestCase):
 
     def test_place(self):
         pl = Place()
-        self.assertEqual(place_1.name, '')
-        self.assertEqual(place_1.city_id, '')
-        self.assertEqual(place_1.user_id, '')
-        self.assertEqual(place_1.description, '')
-        self.assertEqual(place_1.number_rooms, 0)
-        self.assertEqual(place_1.number_bathrooms, 0)
-        self.assertEqual(place_1.max_guest, 0)
-        self.assertEqual(place_1.price_by_night, 0)
-        self.assertEqual(place_1.latitude, 0.0)
-        self.assertEqual(place_1.longitude, 0.0)
-        self.assertEqual(place_1.amenity_ids, [])
+        self.assertEqual(pl.name, '')
+        self.assertEqual(pl.city_id, '')
+        self.assertEqual(pl.user_id, '')
+        self.assertEqual(pl.description, '')
+        self.assertEqual(pl.number_rooms, 0)
+        self.assertEqual(pl.number_bathrooms, 0)
+        self.assertEqual(pl.max_guest, 0)
+        self.assertEqual(pl.price_by_night, 0)
+        self.assertEqual(pl.latitude, 0.0)
+        self.assertEqual(pl.longitude, 0.0)
+        self.assertEqual(pl.amenity_ids, [])
 
 if __name__ == '__main__':
     unittest.main()
