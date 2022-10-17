@@ -23,7 +23,10 @@ class test_filestorage(unittest.TestCase):
         self.assertEqual(type(a), dict)
 
     def test_reload(self):
-        self.assertRaises(FileNotFoundError, storage.reload())
+        re = FileStorage()
+        re.all().clear()
+        re.reload()
+        self.assertTrue(len(re.all()) > 0)
 
     def new(self):
         a = storage.all()

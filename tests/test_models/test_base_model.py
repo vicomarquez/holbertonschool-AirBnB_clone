@@ -7,6 +7,7 @@ from unittest import mock
 from unittest.mock import patch
 from models.base_model import BaseModel
 from datetime import datetime
+import os
 
 
 class test_BaseModel(unittest.TestCase):
@@ -29,10 +30,12 @@ class test_BaseModel(unittest.TestCase):
 
     def test_update_time(self):
         b4 = BaseModel()
-        self.assertEqual(b4.created_at, b4.updated_at)
-        sleep(1)
+        try:
+            os.remove("file.json")
+        except Exception:
+            pass
         b4.save()
-        self.assertNotEqual(b4.created_at, b4.updated_at)
+        self.assertTrue(os.path.exists("file.json"))
 
     def test_str(self):
         b5 = BaseModel()
