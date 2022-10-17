@@ -17,6 +17,16 @@ In this project we are going to start the first phase towards creating a web app
 | all | prints all string representation of all instances based or not on the class name|
 | update | updates an instance based on the class name and id by adding or updating attribute |
 
+## Console Classes
+
+We managed proper serialization and deserialization of these classes:
+- User
+- Place
+- State
+- City
+- Amenity
+- Review
+
 ## How to use the console
 
 First of all, you will need to clone this repository.
