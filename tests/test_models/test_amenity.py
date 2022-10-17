@@ -2,7 +2,7 @@
 """Testerino"""
 
 import unittest
-import models.amenity import Amenity
+from models.amenity import Amenity
 
 
 class test_camenity(unittest.TestCase):

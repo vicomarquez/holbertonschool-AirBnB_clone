@@ -2,7 +2,7 @@
 """Testerino"""
 
 import unittest
-import models.city import City
+from models.city import City
 
 
 class test_ccity(unittest.TestCase):

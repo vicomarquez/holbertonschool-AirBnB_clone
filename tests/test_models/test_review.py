@@ -2,7 +2,7 @@
 """Testerino"""
 
 import unittest
-import models.review import Review
+from models.review import Review
 
 
 class test_creview(unittest.TestCase):

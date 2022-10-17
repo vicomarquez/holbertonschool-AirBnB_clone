@@ -2,7 +2,7 @@
 """Testerino"""
 
 import unittest
-import models.place import Place
+from models.place import Place
 
 
 class test_cplace(unittest.TestCase):

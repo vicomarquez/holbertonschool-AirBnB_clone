@@ -2,7 +2,7 @@
 """Testerino"""
 
 import unittest
-import models.state import State
+from models.state import State
 
 
 class test_cstate(unittest.TestCase):
