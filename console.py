@@ -25,7 +25,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
-        """ Creates a new instance of BaseModel, 
+        """ Creates a new instance of BaseModel,
         saves it (to the JSON file) and prints the id"""
 
         input_ = arg.split()
@@ -39,9 +39,8 @@ class HBNBCommand(cmd.Cmd):
             new.save()
             print(new.id)
 
-
     def do_show(self, arg):
-        """Prints the string representation of an instance 
+        """Prints the string representation of an instance
         based on the class name and id"""
         input_ = arg.split()
         dict_ = storage.all()
@@ -76,14 +75,46 @@ class HBNBCommand(cmd.Cmd):
             except Exception:
                 print("** no instance found **")
 
-
     def do_all(self, arg):
-        """Prints all string representation of all instances 
+        """Prints all string representation of all instances
         based or not on the class name."""
+        input_ = arg.split()
+        l = []
+        if len(input_) == 0:
+            for k, v in storage.all().items():
+                l.append(str(v))
+            print("{}".format(l))
+        elif len(input_) == 1:
+            if input_[0] not in storage.class_dict():
+                print("** class doesn't exist **")
+            else:
+                for k, v in storage.all().items():
+                    claro = k.split(".")
+                    if claro[0] == input_[0]:
+                        l.append(str(v))
+                print("{}".format(l))
 
     def do_update(self, arg):
-        """ Updates an instance based on the class name and 
+        """Updates an instance based on the class name and
         id by adding or updating attribute"""
+        input_ = arg.split()
+
+        if len(input_) == 0:
+            print("** class name missing **")
+        elif input_[0] not in storage.class_dict():
+            print("** class doesn't exist **")
+        elif len(input_) == 1:
+            print("** instance id missing **")
+        if len(input_) > 1:
+            new_key = "{}.{}".format(input_[0], input_[1])
+            if new_key not in storage.all().keys():
+                print("** no instance found **")
+            elif len(input_) == 2:
+                print("** attribute name missing **")
+            elif len(input_) == 3:
+                print("** value missing **")
+            else:
+                setattr(storage.all()[new_key], input_[2], input_[3])
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

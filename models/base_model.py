@@ -6,6 +6,7 @@ This model is used to define the superclass base model
 from uuid import uuid4
 from datetime import datetime
 import models
+format_ = "%Y-%m-%dT%H:%M:%S.%f"
 
 
 class BaseModel:
@@ -18,6 +19,7 @@ class BaseModel:
     to_dict(self): returns a dictionary containing all keys/values of __dict__
     __str__: should print: [<class name>] (<self.id>) <self.__dict__>
     """
+
     def __init__(self, *args, **kwargs):
         self.id = str(uuid4())
         self.created_at = datetime.now()
@@ -25,7 +27,7 @@ class BaseModel:
         if kwargs:
             for key, v in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
-                    self.__dict__[key] = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
+                    self.__dict__[key] = datetime.strptime(v, format_)
                 elif key == '__class__':
                     v = self.__class__
                 else:

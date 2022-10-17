@@ -18,7 +18,7 @@ class FileStorage:
     """
     __file_path = "file.json"
     __objects = {}
-    
+
     def all(self):
         return self.__objects
 
@@ -26,13 +26,13 @@ class FileStorage:
         k = "{}.{}".format(obj.__class__.__name__, obj.id)
         # k = f"{self.obj.__class__.__name__}.{obj.id}"
         self.__objects[k] = obj
-        
+
     def save(self):
         """
         Function that writes an object to text file,
         using a JSON representation.
         """
-        dic ={}
+        dic = {}
         with open(self.__file_path, 'w', encoding="utf-8") as f:
             for k, v in self.__objects.items():
                 dic[k] = v.to_dict()
